@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    environment {
+		PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/go/bin:/data/gopath/bin:/root/bin"
+	}
+    stages {
+        stage('Checkout') {
+            steps {
+            dir ("${env.WORKSPACE}") {
+                echo "$tags"
+                }
+            }
+                
+            }
+        stage('Build') {
+            steps {
+                dir ("${env.WORKSPACE}") {
+                sh """
+                    echo "Build"
+                    """
+                    
+                }
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'deploy'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'test'
+        }
+    }
+}
+}
+
